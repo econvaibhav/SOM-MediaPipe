@@ -1,0 +1,12 @@
+# Historical compatibility environment; tested on Linux x86-64 / Python 3.12.
+mediapipe==0.10.14
+opencv-contrib-python==4.10.0.84
+numpy==1.26.4
+tensorflow-cpu==2.17.0; platform_system != "Darwin"
+tensorflow==2.17.0; platform_system == "Darwin"
+keras==3.5.0
+protobuf==4.25.3
+jax==0.4.30
+jaxlib==0.4.30
+scikit-learn==1.5.1
+matplotlib==3.9.2
