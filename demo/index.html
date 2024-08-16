@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="SOM MediaPipe course project: 21 hand landmarks, a small neural network, and five gestures.">
+<meta name="theme-color" content="#cbd3a3"><title>SOM MediaPipe</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23cbd3a3'/%3E%3Cpath d='M6 6h20v20H6zM10 10h4v4h-4zm8 0h4v4h-4zm-4 8h4v4h-4z' fill='%23263126'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="console">
+<header class="titlebar">
+  <div><p class="kicker">HAND GESTURE STUDY</p><h1>SOM MEDIAPIPE</h1></div>
+  <p class="file-label">COURSE FILE<br>2024</p>
+</header>
+
+<section class="game-screen" aria-label="SOM MediaPipe gesture demo">
+  <div class="screen-head"><strong>HAND LAB</strong><span id="input-label">REPLAY</span></div>
+
+  <div class="play-area">
+    <section class="hand-window" aria-label="Hand landmarks">
+      <div class="canvas-wrap">
+        <canvas id="hand-canvas" width="960" height="660" aria-label="Twenty-one hand landmarks from recorded course examples"></canvas>
+        <span class="landmark-count">21 POINTS</span>
+        <div class="canvas-label"><span id="sample-label">LOADING...</span></div>
+        <div id="loading-error" class="error-overlay" hidden></div>
+      </div>
+    </section>
+
+    <aside class="model-readout" aria-label="Model prediction">
+      <p class="section-label">MODEL LOG</p>
+      <div class="prediction-title">
+        <strong id="predicted-label">—</strong>
+        <span id="prediction-state">LOADING</span>
+      </div>
+      <div id="score-bars" class="score-bars"></div>
+      <p class="model-note">42 → 20 → 10 → 5</p>
+    </aside>
+  </div>
+
+  <div class="battle-area" aria-label="Gesture action example">
+    <div class="pixel-scene">
+      <img class="scene-background" src="media/arena.png" alt="A small forest clearing">
+      <img id="wizard" class="wizard" src="media/wizard.png" alt="Wizard reacting to the recognized gesture">
+      <img id="goblin" class="goblin" src="media/goblin.png" alt="Small goblin">
+      <div id="spell-effect" aria-hidden="true"></div>
+      <div id="ward" class="ward" hidden></div>
+    </div>
+    <div class="reaction-caption">
+      <span id="action-icon" aria-hidden="true">▶</span>
+      <div><b id="action-label">WAITING FOR A POSE</b><p id="action-note">A recognised gesture triggers one small animation.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="controls" aria-label="Demo controls">
+  <div class="source-switch" aria-label="Input source">
+    <button id="replay-button" class="selected" aria-pressed="true">REPLAY</button>
+    <button id="camera-button" aria-pressed="false">CAMERA</button>
+    <button id="pause-button" class="pause-button" aria-label="Pause replay">Ⅱ</button>
+  </div>
+  <div><p class="control-label">CHOOSE A GESTURE</p><div id="sample-buttons" class="sample-buttons"></div></div>
+</section>
+
+<p class="source-note" id="source-note">Recorded landmark rows running through the saved course model.</p>
+<footer><span>MEDIAPIPE: 21 LANDMARKS</span><span>MLP: 5 GESTURES</span><span>RUNS IN YOUR BROWSER</span></footer>
+<p id="status-message" class="status-message" role="status" hidden></p>
+<video id="camera-video" muted playsinline class="hidden-video" aria-hidden="true"></video>
+</main>
+<script type="module" src="app.js"></script>
+</body>
+</html>
