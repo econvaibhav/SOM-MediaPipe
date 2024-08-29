@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="SOM MediaPipe course project: 21 hand landmarks, a small neural network, and five gestures.">
+<meta name="description" content="SOM MediaPipe course project: hand landmarks, normalized coordinates, and a five-class neural network.">
 <meta name="theme-color" content="#cbd3a3"><title>SOM MediaPipe</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23cbd3a3'/%3E%3Cpath d='M6 6h20v20H6zM10 10h4v4h-4zm8 0h4v4h-4zm-4 8h4v4h-4z' fill='%23263126'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
@@ -10,12 +10,12 @@
 <body>
 <main class="console">
 <header class="titlebar">
-  <div><p class="kicker">HAND GESTURE STUDY</p><h1>SOM MEDIAPIPE</h1></div>
-  <p class="file-label">COURSE FILE<br>2024</p>
+  <div><p class="kicker">HAND GESTURE CLASSIFICATION</p><h1>SOM MEDIAPIPE</h1></div>
+  <p class="file-label">SELF-ORGANIZING MAPS<br>COURSE PROJECT · 2024</p>
 </header>
 
-<section class="game-screen" aria-label="SOM MediaPipe gesture demo">
-  <div class="screen-head"><strong>HAND LAB</strong><span id="input-label">REPLAY</span></div>
+<section class="lab-screen" aria-label="SOM MediaPipe gesture demo">
+  <div class="screen-head"><strong>LANDMARK CLASSIFIER</strong><span id="input-label">DATASET EXAMPLE</span></div>
 
   <div class="play-area">
     <section class="hand-window" aria-label="Hand landmarks">
@@ -28,7 +28,7 @@
     </section>
 
     <aside class="model-readout" aria-label="Model prediction">
-      <p class="section-label">MODEL LOG</p>
+      <p class="section-label">MODEL OUTPUT</p>
       <div class="prediction-title">
         <strong id="predicted-label">—</strong>
         <span id="prediction-state">LOADING</span>
@@ -38,32 +38,24 @@
     </aside>
   </div>
 
-  <div class="battle-area" aria-label="Gesture action example">
-    <div class="pixel-scene">
-      <img class="scene-background" src="media/arena.png" alt="A small forest clearing">
-      <img id="wizard" class="wizard" src="media/wizard.png" alt="Wizard reacting to the recognized gesture">
-      <img id="goblin" class="goblin" src="media/goblin.png" alt="Small goblin">
-      <div id="spell-effect" aria-hidden="true"></div>
-      <div id="ward" class="ward" hidden></div>
-    </div>
-    <div class="reaction-caption">
-      <span id="action-icon" aria-hidden="true">▶</span>
-      <div><b id="action-label">WAITING FOR A POSE</b><p id="action-note">A recognised gesture triggers one small animation.</p></div>
-    </div>
-  </div>
+  <ol class="pipeline" aria-label="Recognition pipeline">
+    <li><span>01</span><div><b>DETECT</b><small>21 landmarks</small></div></li>
+    <li><span>02</span><div><b>NORMALIZE</b><small>Wrist + scale</small></div></li>
+    <li><span>03</span><div><b>CLASSIFY</b><small>Saved MLP</small></div></li>
+    <li><span>04</span><div><b>REPORT</b><small>5 model scores</small></div></li>
+  </ol>
 </section>
 
 <section class="controls" aria-label="Demo controls">
   <div class="source-switch" aria-label="Input source">
-    <button id="replay-button" class="selected" aria-pressed="true">REPLAY</button>
+    <button id="examples-button" class="selected" aria-pressed="true">EXAMPLES</button>
     <button id="camera-button" aria-pressed="false">CAMERA</button>
-    <button id="pause-button" class="pause-button" aria-label="Pause replay">Ⅱ</button>
   </div>
-  <div><p class="control-label">CHOOSE A GESTURE</p><div id="sample-buttons" class="sample-buttons"></div></div>
+  <div><p class="control-label">RECORDED GESTURE</p><div id="sample-buttons" class="sample-buttons"></div></div>
 </section>
 
-<p class="source-note" id="source-note">Recorded landmark rows running through the saved course model.</p>
-<footer><span>MEDIAPIPE: 21 LANDMARKS</span><span>MLP: 5 GESTURES</span><span>RUNS IN YOUR BROWSER</span></footer>
+<p class="source-note" id="source-note">Recorded landmarks evaluated by the saved course model.</p>
+<footer><span>KRISTA LAGUS</span><span>SELF-ORGANIZING MAPS</span><span>UNIVERSITY OF HELSINKI</span></footer>
 <p id="status-message" class="status-message" role="status" hidden></p>
 <video id="camera-video" muted playsinline class="hidden-video" aria-hidden="true"></video>
 </main>

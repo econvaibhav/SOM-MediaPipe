@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""SOM course gesture demo; adapted from Kazuhito Takahashi and Nikita Kiselov.
+"""Hand-gesture project for Krista Lagus's Self-Organizing Maps course.
 
+University of Helsinki. Adapted from Kazuhito Takahashi and Nikita Kiselov.
 Hand landmarks, static poses, and optional fingertip motion. Apache-2.0.
 """
 import argparse
@@ -135,7 +136,7 @@ def main(argv=None):
                     display = draw_info_text(display, rect, handedness, signs[sign_id], motion_text)
                 display = draw_point_history(display, state.points)
                 display = draw_info(display, fps_calc.get(), mode, number)
-                cv.imshow('SOM course | MediaPipe gestures', display)
+                cv.imshow('SOM MediaPipe | Hand gestures', display)
     finally:
         cap.release()
         cv.destroyAllWindows()

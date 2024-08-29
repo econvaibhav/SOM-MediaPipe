@@ -1,7 +1,7 @@
-"""Train the upstream MLP architectures with separate train/validation/test splits.
+"""Train the MLP architectures with separate train/validation/test splits.
 
-Added during repository preparation. Existing course model files are not overwritten.
-Rows lack participant/session IDs: this is an exploratory row-level evaluation.
+Existing course models are not overwritten. Rows lack participant or session IDs,
+so the reported metrics are an exploratory row-level evaluation.
 """
 import argparse
 import csv
