@@ -5,14 +5,9 @@ Hand-gesture recognition developed for the **Self-Organizing Maps course taught 
 The project uses MediaPipe hand landmarks and a small neural network to classify five gestures: `Open`, `Close`, `Pointer`, `OK`, and `hi`. The `hi` class adds 168 course examples to the original four-class dataset.
 
 ## Method
-
-![SOM MediaPipe workflow](demo/workflow.png)
-
 1. MediaPipe detects **21 hand landmarks**.
 2. Wrist-relative, scale-normalized coordinates produce **42 features**.
 3. An MLP (**42 → 20 → 10 → 5**) returns the gesture label and model scores.
-
-[LaTeX source for the diagram](demo/workflow.tex)
 
 ## Browser demo
 
